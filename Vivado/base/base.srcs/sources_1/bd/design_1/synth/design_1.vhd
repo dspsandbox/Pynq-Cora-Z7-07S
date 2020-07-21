@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
---Date        : Tue Jul 21 13:53:42 2020
---Host        : pau-VirtualBox running 64-bit Ubuntu 18.04.4 LTS
+--Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
+--Date        : Sat Apr 11 13:03:22 2020
+--Host        : QSWS10 running 64-bit major release  (build 9200)
 --Command     : generate_target design_1.bd
 --Design      : design_1
 --Purpose     : IP block netlist
@@ -600,7 +600,9 @@ entity design_1 is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     btns_2bits_tri_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    rgb_leds_tri_o : out STD_LOGIC_VECTOR ( 5 downto 0 )
+    rgb_leds_tri_i : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    rgb_leds_tri_o : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    rgb_leds_tri_t : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   attribute CORE_GENERATION_INFO : string;
   attribute CORE_GENERATION_INFO of design_1 : entity is "design_1,IP_Integrator,{x_ipVendor=xilinx.com,x_ipLibrary=BlockDiagram,x_ipName=design_1,x_ipVersion=1.00.a,x_ipLanguage=VHDL,numBlks=6,numReposBlks=4,numNonXlnxBlks=0,numHierBlks=2,maxHierDepth=0,numSysgenBlks=0,numHlsBlks=0,numHdlrefBlks=0,numPkgbdBlks=0,bdsource=USER,da_axi4_cnt=3,da_board_cnt=1,da_ps7_cnt=2,synth_mode=Global}";
@@ -609,31 +611,6 @@ entity design_1 is
 end design_1;
 
 architecture STRUCTURE of design_1 is
-  component design_1_axi_gpio_0_1 is
-  port (
-    s_axi_aclk : in STD_LOGIC;
-    s_axi_aresetn : in STD_LOGIC;
-    s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    s_axi_awvalid : in STD_LOGIC;
-    s_axi_awready : out STD_LOGIC;
-    s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
-    s_axi_wvalid : in STD_LOGIC;
-    s_axi_wready : out STD_LOGIC;
-    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_bvalid : out STD_LOGIC;
-    s_axi_bready : in STD_LOGIC;
-    s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
-    s_axi_arvalid : in STD_LOGIC;
-    s_axi_arready : out STD_LOGIC;
-    s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
-    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
-    s_axi_rvalid : out STD_LOGIC;
-    s_axi_rready : in STD_LOGIC;
-    gpio_io_o : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    gpio2_io_i : in STD_LOGIC_VECTOR ( 1 downto 0 )
-  );
-  end component design_1_axi_gpio_0_1;
   component design_1_processing_system7_0_1 is
   port (
     USB0_PORT_INDCTL : out STD_LOGIC_VECTOR ( 1 downto 0 );
@@ -717,8 +694,37 @@ architecture STRUCTURE of design_1 is
     peripheral_aresetn : out STD_LOGIC_VECTOR ( 0 to 0 )
   );
   end component design_1_rst_ps7_0_50M_0;
+  component design_1_axi_gpio_0_1 is
+  port (
+    s_axi_aclk : in STD_LOGIC;
+    s_axi_aresetn : in STD_LOGIC;
+    s_axi_awaddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    s_axi_awvalid : in STD_LOGIC;
+    s_axi_awready : out STD_LOGIC;
+    s_axi_wdata : in STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_wstrb : in STD_LOGIC_VECTOR ( 3 downto 0 );
+    s_axi_wvalid : in STD_LOGIC;
+    s_axi_wready : out STD_LOGIC;
+    s_axi_bresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_bvalid : out STD_LOGIC;
+    s_axi_bready : in STD_LOGIC;
+    s_axi_araddr : in STD_LOGIC_VECTOR ( 8 downto 0 );
+    s_axi_arvalid : in STD_LOGIC;
+    s_axi_arready : out STD_LOGIC;
+    s_axi_rdata : out STD_LOGIC_VECTOR ( 31 downto 0 );
+    s_axi_rresp : out STD_LOGIC_VECTOR ( 1 downto 0 );
+    s_axi_rvalid : out STD_LOGIC;
+    s_axi_rready : in STD_LOGIC;
+    gpio_io_i : in STD_LOGIC_VECTOR ( 5 downto 0 );
+    gpio_io_o : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    gpio_io_t : out STD_LOGIC_VECTOR ( 5 downto 0 );
+    gpio2_io_i : in STD_LOGIC_VECTOR ( 1 downto 0 )
+  );
+  end component design_1_axi_gpio_0_1;
   signal axi_gpio_0_GPIO2_TRI_I : STD_LOGIC_VECTOR ( 1 downto 0 );
+  signal axi_gpio_0_GPIO_TRI_I : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal axi_gpio_0_GPIO_TRI_O : STD_LOGIC_VECTOR ( 5 downto 0 );
+  signal axi_gpio_0_GPIO_TRI_T : STD_LOGIC_VECTOR ( 5 downto 0 );
   signal processing_system7_0_DDR_ADDR : STD_LOGIC_VECTOR ( 14 downto 0 );
   signal processing_system7_0_DDR_BA : STD_LOGIC_VECTOR ( 2 downto 0 );
   signal processing_system7_0_DDR_CAS_N : STD_LOGIC;
@@ -830,14 +836,20 @@ architecture STRUCTURE of design_1 is
   attribute X_INTERFACE_INFO of DDR_dqs_p : signal is "xilinx.com:interface:ddrx:1.0 DDR DQS_P";
   attribute X_INTERFACE_INFO of FIXED_IO_mio : signal is "xilinx.com:display_processing_system7:fixedio:1.0 FIXED_IO MIO";
   attribute X_INTERFACE_INFO of btns_2bits_tri_i : signal is "xilinx.com:interface:gpio:1.0 btns_2bits TRI_I";
+  attribute X_INTERFACE_INFO of rgb_leds_tri_i : signal is "xilinx.com:interface:gpio:1.0 rgb_leds TRI_I";
   attribute X_INTERFACE_INFO of rgb_leds_tri_o : signal is "xilinx.com:interface:gpio:1.0 rgb_leds TRI_O";
+  attribute X_INTERFACE_INFO of rgb_leds_tri_t : signal is "xilinx.com:interface:gpio:1.0 rgb_leds TRI_T";
 begin
   axi_gpio_0_GPIO2_TRI_I(1 downto 0) <= btns_2bits_tri_i(1 downto 0);
+  axi_gpio_0_GPIO_TRI_I(5 downto 0) <= rgb_leds_tri_i(5 downto 0);
   rgb_leds_tri_o(5 downto 0) <= axi_gpio_0_GPIO_TRI_O(5 downto 0);
+  rgb_leds_tri_t(5 downto 0) <= axi_gpio_0_GPIO_TRI_T(5 downto 0);
 base_io: component design_1_axi_gpio_0_1
      port map (
       gpio2_io_i(1 downto 0) => axi_gpio_0_GPIO2_TRI_I(1 downto 0),
+      gpio_io_i(5 downto 0) => axi_gpio_0_GPIO_TRI_I(5 downto 0),
       gpio_io_o(5 downto 0) => axi_gpio_0_GPIO_TRI_O(5 downto 0),
+      gpio_io_t(5 downto 0) => axi_gpio_0_GPIO_TRI_T(5 downto 0),
       s_axi_aclk => processing_system7_0_FCLK_CLK0,
       s_axi_araddr(8 downto 0) => ps7_0_axi_periph_M00_AXI_ARADDR(8 downto 0),
       s_axi_aresetn => rst_ps7_0_50M_peripheral_aresetn(0),

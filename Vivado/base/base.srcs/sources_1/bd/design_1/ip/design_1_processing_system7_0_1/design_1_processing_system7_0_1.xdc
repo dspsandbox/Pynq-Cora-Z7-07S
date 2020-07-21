@@ -6,8 +6,8 @@
 ##
 ##  Details :     Constraints file
 ##                    FPGA family:       zynq
-##                    FPGA:              xc7z010clg400-1
-##                    Device Size:        xc7z010
+##                    FPGA:              xc7z007sclg400-1
+##                    Device Size:        xc7z007s
 ##                    Package:            clg400
 ##                    Speedgrade:         -1
 ##
