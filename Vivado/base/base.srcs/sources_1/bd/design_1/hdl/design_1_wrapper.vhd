@@ -1,8 +1,8 @@
 --Copyright 1986-2019 Xilinx, Inc. All Rights Reserved.
 ----------------------------------------------------------------------------------
---Tool Version: Vivado v.2019.1 (win64) Build 2552052 Fri May 24 14:49:42 MDT 2019
---Date        : Sat Apr 11 13:03:22 2020
---Host        : QSWS10 running 64-bit major release  (build 9200)
+--Tool Version: Vivado v.2019.1 (lin64) Build 2552052 Fri May 24 14:47:09 MDT 2019
+--Date        : Tue Jul 21 13:53:43 2020
+--Host        : pau-VirtualBox running 64-bit Ubuntu 18.04.4 LTS
 --Command     : generate_target design_1_wrapper.bd
 --Design      : design_1_wrapper
 --Purpose     : IP block netlist
@@ -35,7 +35,7 @@ entity design_1_wrapper is
     FIXED_IO_ps_porb : inout STD_LOGIC;
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     btns_2bits_tri_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
-    rgb_leds_tri_io : inout STD_LOGIC_VECTOR ( 5 downto 0 )
+    rgb_leds_tri_o : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
 end design_1_wrapper;
 
@@ -63,44 +63,10 @@ architecture STRUCTURE of design_1_wrapper is
     FIXED_IO_ps_srstb : inout STD_LOGIC;
     FIXED_IO_ps_clk : inout STD_LOGIC;
     FIXED_IO_ps_porb : inout STD_LOGIC;
-    rgb_leds_tri_i : in STD_LOGIC_VECTOR ( 5 downto 0 );
-    rgb_leds_tri_o : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    rgb_leds_tri_t : out STD_LOGIC_VECTOR ( 5 downto 0 );
-    btns_2bits_tri_i : in STD_LOGIC_VECTOR ( 1 downto 0 )
+    btns_2bits_tri_i : in STD_LOGIC_VECTOR ( 1 downto 0 );
+    rgb_leds_tri_o : out STD_LOGIC_VECTOR ( 5 downto 0 )
   );
   end component design_1;
-  component IOBUF is
-  port (
-    I : in STD_LOGIC;
-    O : out STD_LOGIC;
-    T : in STD_LOGIC;
-    IO : inout STD_LOGIC
-  );
-  end component IOBUF;
-  signal rgb_leds_tri_i_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rgb_leds_tri_i_1 : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal rgb_leds_tri_i_2 : STD_LOGIC_VECTOR ( 2 to 2 );
-  signal rgb_leds_tri_i_3 : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal rgb_leds_tri_i_4 : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal rgb_leds_tri_i_5 : STD_LOGIC_VECTOR ( 5 to 5 );
-  signal rgb_leds_tri_io_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rgb_leds_tri_io_1 : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal rgb_leds_tri_io_2 : STD_LOGIC_VECTOR ( 2 to 2 );
-  signal rgb_leds_tri_io_3 : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal rgb_leds_tri_io_4 : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal rgb_leds_tri_io_5 : STD_LOGIC_VECTOR ( 5 to 5 );
-  signal rgb_leds_tri_o_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rgb_leds_tri_o_1 : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal rgb_leds_tri_o_2 : STD_LOGIC_VECTOR ( 2 to 2 );
-  signal rgb_leds_tri_o_3 : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal rgb_leds_tri_o_4 : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal rgb_leds_tri_o_5 : STD_LOGIC_VECTOR ( 5 to 5 );
-  signal rgb_leds_tri_t_0 : STD_LOGIC_VECTOR ( 0 to 0 );
-  signal rgb_leds_tri_t_1 : STD_LOGIC_VECTOR ( 1 to 1 );
-  signal rgb_leds_tri_t_2 : STD_LOGIC_VECTOR ( 2 to 2 );
-  signal rgb_leds_tri_t_3 : STD_LOGIC_VECTOR ( 3 to 3 );
-  signal rgb_leds_tri_t_4 : STD_LOGIC_VECTOR ( 4 to 4 );
-  signal rgb_leds_tri_t_5 : STD_LOGIC_VECTOR ( 5 to 5 );
 begin
 design_1_i: component design_1
      port map (
@@ -126,65 +92,6 @@ design_1_i: component design_1
       FIXED_IO_ps_porb => FIXED_IO_ps_porb,
       FIXED_IO_ps_srstb => FIXED_IO_ps_srstb,
       btns_2bits_tri_i(1 downto 0) => btns_2bits_tri_i(1 downto 0),
-      rgb_leds_tri_i(5) => rgb_leds_tri_i_5(5),
-      rgb_leds_tri_i(4) => rgb_leds_tri_i_4(4),
-      rgb_leds_tri_i(3) => rgb_leds_tri_i_3(3),
-      rgb_leds_tri_i(2) => rgb_leds_tri_i_2(2),
-      rgb_leds_tri_i(1) => rgb_leds_tri_i_1(1),
-      rgb_leds_tri_i(0) => rgb_leds_tri_i_0(0),
-      rgb_leds_tri_o(5) => rgb_leds_tri_o_5(5),
-      rgb_leds_tri_o(4) => rgb_leds_tri_o_4(4),
-      rgb_leds_tri_o(3) => rgb_leds_tri_o_3(3),
-      rgb_leds_tri_o(2) => rgb_leds_tri_o_2(2),
-      rgb_leds_tri_o(1) => rgb_leds_tri_o_1(1),
-      rgb_leds_tri_o(0) => rgb_leds_tri_o_0(0),
-      rgb_leds_tri_t(5) => rgb_leds_tri_t_5(5),
-      rgb_leds_tri_t(4) => rgb_leds_tri_t_4(4),
-      rgb_leds_tri_t(3) => rgb_leds_tri_t_3(3),
-      rgb_leds_tri_t(2) => rgb_leds_tri_t_2(2),
-      rgb_leds_tri_t(1) => rgb_leds_tri_t_1(1),
-      rgb_leds_tri_t(0) => rgb_leds_tri_t_0(0)
-    );
-rgb_leds_tri_iobuf_0: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_0(0),
-      IO => rgb_leds_tri_io(0),
-      O => rgb_leds_tri_i_0(0),
-      T => rgb_leds_tri_t_0(0)
-    );
-rgb_leds_tri_iobuf_1: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_1(1),
-      IO => rgb_leds_tri_io(1),
-      O => rgb_leds_tri_i_1(1),
-      T => rgb_leds_tri_t_1(1)
-    );
-rgb_leds_tri_iobuf_2: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_2(2),
-      IO => rgb_leds_tri_io(2),
-      O => rgb_leds_tri_i_2(2),
-      T => rgb_leds_tri_t_2(2)
-    );
-rgb_leds_tri_iobuf_3: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_3(3),
-      IO => rgb_leds_tri_io(3),
-      O => rgb_leds_tri_i_3(3),
-      T => rgb_leds_tri_t_3(3)
-    );
-rgb_leds_tri_iobuf_4: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_4(4),
-      IO => rgb_leds_tri_io(4),
-      O => rgb_leds_tri_i_4(4),
-      T => rgb_leds_tri_t_4(4)
-    );
-rgb_leds_tri_iobuf_5: component IOBUF
-     port map (
-      I => rgb_leds_tri_o_5(5),
-      IO => rgb_leds_tri_io(5),
-      O => rgb_leds_tri_i_5(5),
-      T => rgb_leds_tri_t_5(5)
+      rgb_leds_tri_o(5 downto 0) => rgb_leds_tri_o(5 downto 0)
     );
 end STRUCTURE;
